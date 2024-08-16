@@ -1,3 +1,4 @@
+/* GLOBAL */
 @font-face {
     font-family: 'Star Jedi';
     src: url('../webfonts/starjedi/Starjedi.ttf');
@@ -5,8 +6,16 @@
 
 body {
     font-family: 'Star Jedi', sans-serif;
+    color: #DAA520;
+    background-image: url('../images/star-wars-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    width: 100%;
 }
 
+
+/* HEADER */
 .cabecalho {
     height: 70px;
     background-color: #000000;
@@ -36,26 +45,75 @@ body {
 }
 
 .social-header a {
-    color: goldenrod;
-    transition: 0.3s ease-in-out;
+    color: #DAA520;
     font-size: larger;
+    transition: 0.3s ease-in-out;
 }
 
 .social-header a:hover {
     color: #FFFFFF;
 }
 
+
+/* MAIN */
 main {
-    background-image: url('../images/star-wars-bg.jpg');
-    background-size: cover;
-    background-position: right;
-    height: 76vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     width: 100%;
+    padding: 20px 0;
 }
 
+main h2 {
+    margin-bottom: 20px;
+    font-weight: 300;
+}
+
+main .conteudo {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    column-gap: 20px;
+    row-gap: 10px;
+    padding: 0 20px;
+}
+
+main .conteudo .cards {
+    width: 230px;
+    height: 470px;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: end;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: 0.3s;
+    padding: 5px;
+}
+
+main .conteudo .cards:hover {
+    transform: scale(1.02);
+}
+
+main .conteudo .cards .container-nome {
+    width: 100%;
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+}
+
+main .conteudo .cards .container-nome .nome-personagem {
+
+}
+
+/* FOOTER */
 .rodape {
-    color:#FFFFFF;
     background: #000000;
+    color: #FFFFFF;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -74,8 +132,8 @@ main {
 }
 
 .rodape .social a {
+    color: #DAA520;
     margin: 15px 0;
-    color: goldenrod;
     font-size: larger;
     transition: 0.3s ease-in-out;
 }
