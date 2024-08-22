@@ -110,7 +110,7 @@ main h2 {
     font-size: 1rem;
 }
 
-.conteudo .botoes {
+.botoes {
     width: 60%;
     display: flex;
     align-items: center;
