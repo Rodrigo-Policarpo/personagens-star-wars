@@ -5,12 +5,13 @@
 }
 
 body {
+    margin: 0;
     font-family: 'Star Jedi', sans-serif;
     color: #DAA520;
     background-image: url('../images/star-wars-bg.jpg');
     background-size: cover;
     background-position: center;
-    height: 100vh;
+    height: 100%;
     width: 100%;
 }
 
