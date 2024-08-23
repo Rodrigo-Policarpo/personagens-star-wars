@@ -50,10 +50,42 @@ async function carregarPersonagens(url) {
 
         btnAnterior.style.visibility = respostaJson.previous? "visible" : "hidden";
 
+        btnProximo.style.visibility = respostaJson.next? "visible" : "hidden";
+
         urlPaginaAtual = url;
     }
     catch (error) {
         console.log(error);
         alert('Erro ao carrregar os personagens');
+    }
+}
+
+async function carregarProxixmo() {
+    if (!urlPaginaAtual) return;
+
+    try {
+        const resposta = await fetch(urlPaginaAtual);
+        const respostaJson = await resposta.json(); 
+
+        await carregarPersonagens(respostaJson.next);
+    }
+    catch (error) {
+        console.log(error);
+        alert('Não foi possível carregar a página');
+    }
+}
+
+async function carregarAnterior() {
+    if (!urlPaginaAtual) return;
+
+    try {
+        const resposta = await fetch(urlPaginaAtual);
+        const respostaJson = await resposta.json();
+
+        await carregarPersonagens(respostaJson.previous);
+    }
+    catch (error) {
+        console.log(error);
+        alert('Não foi possível carregar a página');
     }
 }
