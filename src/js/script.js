@@ -8,6 +8,12 @@ window.onload = async () => {
         console.log(error);
         alert('Erro ao carregar os cards');
     }
+
+    const btnAnterior = document.getElementById('btn-anterior');
+    const btnProximo = document.getElementById('btn-proximo');
+
+    btnAnterior.addEventListener('click', carregarAnterior);
+    btnProximo.addEventListener('click', carregarProxixmo);
 };
 
 async function carregarPersonagens(url) {
@@ -20,7 +26,7 @@ async function carregarPersonagens(url) {
 
         respostaJson.results.forEach((character) => {
             const cards = document.createElement("div");
-            cards.style.backgroundImage = `url('https://starwars-visualguide.com/assets/img/characters/1.jpg')`;
+            cards.style.backgroundImage = `url('https://starwars-visualguide.com/assets/img/characters/${character.url.replace(/\D/g, "")}.jpg')`;
             cards.className = "cards";
 
             const containerNome = document.createElement("div");
@@ -34,7 +40,15 @@ async function carregarPersonagens(url) {
             cards.appendChild(containerNome);
 
             conteudo.appendChild(cards);
-        });
+        }); 
+
+        const btnAnterior = document.getElementById('btn-anterior');
+        const btnProximo = document.getElementById('btn-proximo');
+
+        btnAnterior.disabled = !respostaJson.previous;
+        btnProximo.disabled = !respostaJson.next;
+
+        btnAnterior.style.visibility = respostaJson.previous? "visible" : "hidden";
 
         urlPaginaAtual = url;
     }
