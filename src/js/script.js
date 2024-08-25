@@ -42,6 +42,35 @@ async function carregarPersonagens(url) {
             cards.onclick = () => {
                 const modal = document.getElementById('modal');
                 modal.style.visibility = 'visible';
+
+                const conteudoModal = document.getElementById('conteudo-modal');
+                conteudoModal.innerHTML = '';
+
+                const imagemPersonagem = document.createElement('div');
+                imagemPersonagem.style.backgroundImage = `url('https://starwars-visualguide.com/assets/img/characters/${character.url.replace(/\D/g, "")}.jpg')`;
+                imagemPersonagem.className = 'imagem-personagem';
+
+                const nome = document.createElement('span');
+                nome.className = 'detalhes-personagem';
+                nome.innerText = `Nome: ${character.name}`;
+                
+                const alturaPersonagem = document.createElement('span');
+                alturaPersonagem.className = 'detalhes-personagem';
+                alturaPersonagem.innerText = `Altura: ${converterAltura(character.height)}`;
+                
+                const peso = document.createElement('span');
+                peso.className = 'detalhes-personagem';
+                peso.innerText = `Peso: ${converterPeso(character.mass)}`;
+                
+                const nascimento = document.createElement('span');
+                nascimento.className = 'detalhes-personagem';
+                nascimento.innerText = `Nascimento: ${converterNascimento(character.birth_year)}`;
+
+                conteudoModal.appendChild(imagemPersonagem);
+                conteudoModal.appendChild(nome);
+                conteudoModal.appendChild(alturaPersonagem);
+                conteudoModal.appendChild(peso);
+                conteudoModal.appendChild(nascimento);
             }
 
             conteudo.appendChild(cards);
@@ -98,4 +127,26 @@ async function carregarAnterior() {
 function ocultarModal() {
     const modal = document.getElementById('modal');
     modal.style.visibility = 'hidden';
+}
+
+function converterAltura(peso) {
+    if (peso === 'unknown') {
+        return 'desconhecido';
+    }
+
+    return `${(peso / 100).toFixed(2)}m`;
+}
+
+function converterPeso(peso) {
+    if (peso === 'unknown') {
+        return 'desconhecido';
+    }
+    return `${peso}kg`;
+}
+
+function converterNascimento(nascimento) {
+    if (nascimento === 'unknown') {
+        return 'desconhecido'
+    }
+    return nascimento;
 }
