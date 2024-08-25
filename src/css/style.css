@@ -135,6 +135,19 @@ main h2 {
     align-items: center;
 }
 
+.imagem-personagem {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-position: 50% 10%;
+    background-size: cover;
+}
+
+.detalhes-personagem {
+    font-size: 1rem;
+    font-weight: lighter;
+}
+
 .botoes {
     width: 60%;
     display: flex;
