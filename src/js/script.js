@@ -25,19 +25,24 @@ async function carregarPersonagens(url) {
         const respostaJson = await resposta.json();
 
         respostaJson.results.forEach((character) => {
-            const cards = document.createElement("div");
+            const cards = document.createElement('div');
             cards.style.backgroundImage = `url('https://starwars-visualguide.com/assets/img/characters/${character.url.replace(/\D/g, "")}.jpg')`;
-            cards.className = "cards";
+            cards.className = 'cards';
 
-            const containerNome = document.createElement("div");
-            containerNome.className = "container-nome";
+            const containerNome = document.createElement('div');
+            containerNome.className = 'container-nome';
 
-            const nomePersonagem = document.createElement("span");
-            nomePersonagem.className = "nome-personagem";
+            const nomePersonagem = document.createElement('span');
+            nomePersonagem.className = 'nome-personagem';
             nomePersonagem.innerText = `${character.name}`;
 
             containerNome.appendChild(nomePersonagem);
             cards.appendChild(containerNome);
+
+            cards.onclick = () => {
+                const modal = document.getElementById('modal');
+                modal.style.visibility = 'visible';
+            }
 
             conteudo.appendChild(cards);
         }); 
@@ -48,9 +53,9 @@ async function carregarPersonagens(url) {
         btnAnterior.disabled = !respostaJson.previous;
         btnProximo.disabled = !respostaJson.next;
 
-        btnAnterior.style.visibility = respostaJson.previous? "visible" : "hidden";
+        btnAnterior.style.visibility = respostaJson.previous? 'visible' : 'hidden';
 
-        btnProximo.style.visibility = respostaJson.next? "visible" : "hidden";
+        btnProximo.style.visibility = respostaJson.next? 'visible' : 'hidden';
 
         urlPaginaAtual = url;
     }
@@ -88,4 +93,9 @@ async function carregarAnterior() {
         console.log(error);
         alert('Não foi possível carregar a página');
     }
+}
+
+function ocultarModal() {
+    const modal = document.getElementById('modal');
+    modal.style.visibility = 'hidden';
 }
