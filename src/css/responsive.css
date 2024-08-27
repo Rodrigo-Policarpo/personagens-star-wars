@@ -1,0 +1,23 @@
+@media (max-width: 900px) {
+    main h2 {
+        text-align: center;
+    }
+}
+
+@media (max-width: 450px) {
+    .cabecalho {
+        flex-direction: column;
+        height: 100px;
+        padding: 20px;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .social-header {
+        margin: 0;
+    }
+
+    .rodape p {
+        padding: 0 20px;
+    }
+}
